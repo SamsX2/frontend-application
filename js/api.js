@@ -27,3 +27,10 @@ export const updatePastel = async (id, pastel) => {
         method: "DELETE", 
     });
 };
+
+// Borrar un Producto
+export const Deletepastel = async (id) => {
+    return fetch(`${API_URL}/${id}`, {
+      method: "DELETE"
+    });
+  }
