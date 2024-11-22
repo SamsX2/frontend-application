@@ -33,7 +33,7 @@
   <main class="container pt-3 pb-3">
     <div class="row">
         <div class="col">
-            <h1 class="text-center"> formulario de resgistro</h1>
+            <h1 class="text-center"> formulario de registro</h1>
         </div>
     </div>
 <div class="row">
@@ -61,5 +61,21 @@
   </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="js/api.js"></script>
+    <script type="module">
+      import { addPastel } from './js/api.js';
+      // Guardar Formulario de agregar producto en base de datos
+      document.getElementById('pastel-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const newpastel = {
+          name: document.getElementById('name').value,
+          description: document.getElementById('description').value,
+          price: parseFloat(document.getElementById('price')).value
+
+        };
+        await addPastel(newpastel);
+        window.location.href = 'index.html'; // Redirige al catálogo
+      });
+    </script>
   </body>
 </html>
