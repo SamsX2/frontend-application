@@ -7,6 +7,7 @@ document.addEventListener ("DOMContentLoaded", async () => {
     const pastel = await getpastel();
     pastellist.innerHTML = pastel.map(pastel => `
             <div class="col-xs-12 col-sm-6 col-md-3 card">
+                <img class="card-img-top" src="${pastel.imgUrl}">
                 <div class="card-body d-flex flex-column justify-content-end">
                     <h5 class="card-title">${pastel.name}</h5>
                     <p class="card-text">${pastel.price}</p>
@@ -22,6 +23,7 @@ window.viewPastel = async (id) => {
 
     const pastelDetails = `
         <div class="col">
+            <img class="img-fluid" src="${pastel.imgUrl}">
             <h3>${pastel.name}</h3>
             <p>${pastel.description}</p>
             <p>precio: ${pastel.price}</p>
@@ -39,6 +41,7 @@ window.enableEdit = async (id) => {
     const editform =`
         <div class="row gap-3">
             <input type="number" id="price" value="${pastel.price}">
+            <input type="text" id="imgUrl" value="${pastel.imgUrl}">
             <input type="text" id="name" values="${pastel.name}">
             <textarea id=" decription">${pastel.description}</textarea>
             <button class="btn btn-success" onclick="saveEdit(${id})
@@ -53,7 +56,8 @@ window.saveEdit = async (id) => {
     const updatePastel = {
         name: document.getElementById("name").value,
         description:document.getElementById("description").value,
-        price: parseFloat(document.getElementById("price").value)
+        price: parseFloat(document.getElementById("price").value),
+        imgUrl: document.getElementById("imgUrl").value
 
     };
     await updatePastels(id, updatePastel); 

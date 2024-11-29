@@ -54,6 +54,11 @@
                 <input type="number" class="form-control" id="price" placeholder="precio de la idea" required>
               </div required>
 
+              <div class="mb-3">
+                <label for="imgUrl" class="form-label">imagen de la idea</label>
+                <input type="text" class="form-control" id="imgUrl" placeholder="imagen de la idea"required>
+              </div>
+
               <button type="submit"  class="btn btn-success">guardar idea</button>
         </form>
     </div>
@@ -70,7 +75,8 @@
         const newpastel = {
           name: document.getElementById('name').value,
           description: document.getElementById('description').value,
-          price: parseFloat(document.getElementById('price')).value
+          price: parseFloat(document.getElementById('price')).value,
+          imgUrl: document.getElementById('imgUrl').value
 
         };
         await addPastel(newpastel);
